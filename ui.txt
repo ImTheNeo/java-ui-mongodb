@@ -1,0 +1,118 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.SystemColor;
+
+public class ConnectToDB extends JFrame {
+
+	private JFrame frame;
+	
+	static String studentname;
+	static String coursecode;
+	static String Final_String;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		
+		
+		
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ConnectToDB window = new ConnectToDB();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public ConnectToDB() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(SystemColor.activeCaption);
+		frame.setBounds(100, 100, 565, 354);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JButton student_name = new JButton("Enter Student Name");
+		student_name.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				studentname = JOptionPane.showInputDialog("Enter Student Name");
+				
+			}
+		});
+		student_name.setBounds(0, 30, 173, 54);
+		frame.getContentPane().add(student_name);
+		
+		JButton course_code = new JButton("Enter Course Code");
+		course_code.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				coursecode = JOptionPane.showInputDialog("Enter Student Name");
+			}
+		});
+		course_code.setBounds(0, 90, 173, 47);
+		frame.getContentPane().add(course_code);
+		
+		
+		JButton insert = new JButton("Insert");
+		
+		insert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(ConnectToDB.this, "It is inserted successfully","Insert",JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		insert.setBounds(278, 188, 124, 47);
+		frame.getContentPane().add(insert);
+		
+		JButton Update = new JButton("Update");
+		Update.setBounds(412, 188, 127, 47);
+		Update.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(ConnectToDB.this, "It is uptaded successfully","Update",JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		frame.getContentPane().add(Update);
+		
+		JButton Delete = new JButton("Delete");
+		Delete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JOptionPane.showMessageDialog(ConnectToDB.this, "It is deleted successfully","Delete",JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		Delete.setBounds(144, 188, 124, 47);
+		frame.getContentPane().add(Delete);
+		
+		JButton Read = new JButton("Read");
+		Read.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Final_String = studentname +"\n" + coursecode;
+				JOptionPane.showMessageDialog(ConnectToDB.this, Final_String,"Infos",JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		Read.setBounds(17, 188, 117, 47);
+		frame.getContentPane().add(Read);
+	}
+}
